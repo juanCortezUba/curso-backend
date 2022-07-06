@@ -10,6 +10,7 @@ const {
   addName,
   pg_newUser,
   pg_getUsers,
+  pg_updateUser,
 } = require("./components/testpg");
 app.use(cors()); // use cors
 
@@ -64,6 +65,18 @@ app.post("/api/user/setcreds", (req, resp) => {
       message: "No hay Usuario con esos datos ",
     });
   }
+});
+
+app.post("/updateUser", (req, resp) => {
+  console.log("/updateUser");
+  console.log(req.body);
+  let user = req.body.user;
+  pg_updateUser(user, (error, result) => {
+    if (error) {
+      return resp.status(215).json({ error });
+    }
+    resp.status(200).json({ data: result.rows });
+  });
 });
 
 app.post("/getusers", (req, resp) => {
