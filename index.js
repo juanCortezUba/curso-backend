@@ -57,14 +57,9 @@ app.get("/api/start", function (req, res) {
 app.post("/api/user/setcreds", (req, resp) => {
   console.log("setCreds");
   // consulta DB
-  if (rowCount > 0) {
+//  if (rowCount > 0) {
     resp.status(200).json({ hash: "sdfsdfsdfs6546546546", message: "ok" });
-  } else {
-    resp.status(205).json({
-      hash: "sdfsdfsdfs6546546546",
-      message: "No hay Usuario con esos datos ",
-    });
-  }
+ 
 });
 
 app.post("/updateUser", (req, resp) => {
